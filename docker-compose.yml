@@ -5,13 +5,13 @@ services:
     container_name: lemp_php
     build:
       context: ./php
-      dockerfile: Dockerfile  
+      dockerfile: Dockerfile    
     image: php:7.4-fpm-alpine
     restart: unless-stopped
     volumes:
       - ./html/:/var/www/html
     expose:
-      - "8680"
+      - "8892"
 
   nginx:
     container_name: lemp_nginx
@@ -24,7 +24,7 @@ services:
       - ./nginx/conf.d:/etc/nginx/conf.d:ro
 
     ports:
-      - "8780:80"
+      - "8893:80"
 
 networks:
   default:
