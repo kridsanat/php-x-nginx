@@ -1,10 +1,17 @@
-version: '3.8'
-services: 
-    web:
-        image: nginx:1.13.0-alpine
-        container_name: wrk-nginx
-        restart: always
-        ports: 
-        - "8891:80"
-        volumes: 
-        - ./nginx/scr:/var/www/html/
+version: '3'
+
+services:
+  nginx:
+    container_name: nginx
+    restart: unless-stopped
+    image: nginx:stable-alpine
+    volumes:
+      - ./static-html:/usr/share/nginx/html
+    ports:
+      - "8890:80"
+
+networks:
+  default:
+    external:
+      name:
+        web_network
